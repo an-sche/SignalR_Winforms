@@ -1,6 +1,6 @@
 ﻿namespace Client;
 
-partial class Form1
+partial class ClientForm
 {
     /// <summary>
     ///  Required designer variable.
@@ -30,12 +30,12 @@ partial class Form1
     {
         SuspendLayout();
         // 
-        // Form1
+        // ClientForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
-        Name = "Form1";
+        Name = "ClientForm";
         Text = "Client";
         ResumeLayout(false);
     }
