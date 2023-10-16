@@ -6,4 +6,9 @@ public partial class ServerForm : Form
     {
         InitializeComponent();
     }
+
+    private void btnSend_Click(object sender, EventArgs e)
+    {
+
+    }
 }
