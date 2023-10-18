@@ -34,6 +34,8 @@ partial class ServerForm
         txtMessage = new TextBox();
         lblMessage = new Label();
         btnSend = new Button();
+        btnStart = new Button();
+        btnStop = new Button();
         SuspendLayout();
         // 
         // txtLog
@@ -86,11 +88,34 @@ partial class ServerForm
         btnSend.UseVisualStyleBackColor = true;
         btnSend.Click += btnSend_Click;
         // 
+        // btnStart
+        // 
+        btnStart.Location = new Point(341, 33);
+        btnStart.Name = "btnStart";
+        btnStart.Size = new Size(75, 23);
+        btnStart.TabIndex = 6;
+        btnStart.Text = "Start";
+        btnStart.UseVisualStyleBackColor = true;
+        btnStart.Click += btnStart_Click;
+        // 
+        // btnStop
+        // 
+        btnStop.Enabled = false;
+        btnStop.Location = new Point(479, 33);
+        btnStop.Name = "btnStop";
+        btnStop.Size = new Size(75, 23);
+        btnStop.TabIndex = 7;
+        btnStop.Text = "Stop";
+        btnStop.UseVisualStyleBackColor = true;
+        btnStop.Click += btnStop_Click;
+        // 
         // ServerForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
+        Controls.Add(btnStop);
+        Controls.Add(btnStart);
         Controls.Add(btnSend);
         Controls.Add(lblMessage);
         Controls.Add(txtMessage);
@@ -111,4 +136,6 @@ partial class ServerForm
     private TextBox txtMessage;
     private Label lblMessage;
     private Button btnSend;
+    private Button btnStart;
+    private Button btnStop;
 }
