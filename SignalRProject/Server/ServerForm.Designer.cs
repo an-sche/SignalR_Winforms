@@ -44,6 +44,7 @@ partial class ServerForm
         txtLog.Name = "txtLog";
         txtLog.Size = new Size(294, 426);
         txtLog.TabIndex = 0;
+        txtLog.TabStop = false;
         txtLog.Text = "";
         // 
         // flowLayoutPanel1
@@ -67,7 +68,7 @@ partial class ServerForm
         txtMessage.Location = new Point(341, 118);
         txtMessage.Name = "txtMessage";
         txtMessage.Size = new Size(213, 23);
-        txtMessage.TabIndex = 3;
+        txtMessage.TabIndex = 2;
         // 
         // lblMessage
         // 
@@ -102,7 +103,7 @@ partial class ServerForm
         txtClient.Location = new Point(341, 74);
         txtClient.Name = "txtClient";
         txtClient.Size = new Size(213, 23);
-        txtClient.TabIndex = 6;
+        txtClient.TabIndex = 1;
         // 
         // ServerForm
         // 

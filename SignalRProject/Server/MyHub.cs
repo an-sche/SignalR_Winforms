@@ -7,37 +7,55 @@ public class MyHub : Hub<IChatClient>
 
     public async Task BroadcastMessage(string message)
     {
-        await Clients.All.ReceiveMessage(message);
+        string user = Connections.GetKey(Context.ConnectionId) ?? string.Empty;
+        if (string.IsNullOrEmpty(user))
+        {
+            await Clients.Caller.ReceiveMessage($"You do not exist in Mapping.");
+            return;
+        }
+
+        string messageToSend = user + ": " + message;
+
+        await Clients.All.ReceiveMessage(messageToSend);
     }
 
     public async Task SendMessage(string who, string message)
     {
-
-        if (!Connections.GetConnections(who).Any())
+        string user = Connections.GetKey(Context.ConnectionId) ?? string.Empty;
+        if (string.IsNullOrEmpty(user))
         {
-            // This is error, return "User Not Found"
+            await Clients.Caller.ReceiveMessage($"You do not exist in Mapping.");
+            return;
+        }
+
+        var receiverConnections = Connections.GetConnections(who);
+        if (!receiverConnections.Any())
+        {
             await Clients.Caller.ReceiveMessage($"User <{who}> does not exist.");
             return;
         }
 
-        foreach (var connection in Connections.GetConnections(who))
+        string messageToSend = user + ": " + message;
+        foreach (var connection in receiverConnections)
         {
-            await Clients.Client(connection).ReceiveMessage(message);
+            await Clients.Client(connection).ReceiveMessage(messageToSend);
         }
+        await Clients.Caller.ReceiveMessage(messageToSend);
     }
 
-    public override Task OnConnectedAsync()
+    public async Task DeclareUser(string name)
     {
-        // TODO: Add Connection association of user to connection id
-        string? user = Context.User?.Identity?.Name;
-
-        return base.OnConnectedAsync();
+        Connections.Add(name, Context.ConnectionId);
+        await Clients.Caller.ReceiveMessage($"User <{name}> Added.");
     }
 
     public override Task OnDisconnectedAsync(Exception? exception)
     {
-        // TODO: Remove Connection association of user to connection id
-        string? user = Context.User?.Identity?.Name;
+        var name = Connections.GetKey(Context.ConnectionId);
+        if (name != null)
+        {
+            Connections.Remove(name, Context.ConnectionId);
+        }
 
         return base.OnDisconnectedAsync(exception);
     }

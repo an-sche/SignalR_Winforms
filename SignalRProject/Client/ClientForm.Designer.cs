@@ -36,6 +36,9 @@ partial class ClientForm
         btnSend = new Button();
         txtMessage = new TextBox();
         lblMessage = new Label();
+        lblWho = new Label();
+        txtWho = new TextBox();
+        btnBroadcast = new Button();
         SuspendLayout();
         // 
         // txtClientName
@@ -50,7 +53,8 @@ partial class ClientForm
         txtLog.Location = new Point(403, 11);
         txtLog.Name = "txtLog";
         txtLog.Size = new Size(289, 346);
-        txtLog.TabIndex = 1;
+        txtLog.TabIndex = 10;
+        txtLog.TabStop = false;
         txtLog.Text = "";
         // 
         // lblClientName
@@ -67,7 +71,7 @@ partial class ClientForm
         btnConnect.Location = new Point(311, 12);
         btnConnect.Name = "btnConnect";
         btnConnect.Size = new Size(75, 23);
-        btnConnect.TabIndex = 3;
+        btnConnect.TabIndex = 1;
         btnConnect.Text = "Connect";
         btnConnect.UseVisualStyleBackColor = true;
         btnConnect.Click += btnConnect_Click;
@@ -77,14 +81,14 @@ partial class ClientForm
         btnDisconnect.Location = new Point(311, 41);
         btnDisconnect.Name = "btnDisconnect";
         btnDisconnect.Size = new Size(75, 23);
-        btnDisconnect.TabIndex = 4;
+        btnDisconnect.TabIndex = 2;
         btnDisconnect.Text = "Disconnect";
         btnDisconnect.UseVisualStyleBackColor = true;
         btnDisconnect.Click += btnDisconnect_Click;
         // 
         // btnSend
         // 
-        btnSend.Location = new Point(311, 121);
+        btnSend.Location = new Point(311, 181);
         btnSend.Name = "btnSend";
         btnSend.Size = new Size(75, 23);
         btnSend.TabIndex = 5;
@@ -94,25 +98,54 @@ partial class ClientForm
         // 
         // txtMessage
         // 
-        txtMessage.Location = new Point(102, 122);
+        txtMessage.Location = new Point(100, 181);
         txtMessage.Name = "txtMessage";
         txtMessage.Size = new Size(167, 23);
-        txtMessage.TabIndex = 6;
+        txtMessage.TabIndex = 4;
         // 
         // lblMessage
         // 
         lblMessage.AutoSize = true;
-        lblMessage.Location = new Point(26, 125);
+        lblMessage.Location = new Point(24, 184);
         lblMessage.Name = "lblMessage";
         lblMessage.Size = new Size(56, 15);
         lblMessage.TabIndex = 7;
         lblMessage.Text = "Message:";
+        // 
+        // lblWho
+        // 
+        lblWho.AutoSize = true;
+        lblWho.Location = new Point(45, 155);
+        lblWho.Name = "lblWho";
+        lblWho.Size = new Size(35, 15);
+        lblWho.TabIndex = 9;
+        lblWho.Text = "Who:";
+        // 
+        // txtWho
+        // 
+        txtWho.Location = new Point(100, 152);
+        txtWho.Name = "txtWho";
+        txtWho.Size = new Size(167, 23);
+        txtWho.TabIndex = 3;
+        // 
+        // btnBroadcast
+        // 
+        btnBroadcast.Location = new Point(311, 210);
+        btnBroadcast.Name = "btnBroadcast";
+        btnBroadcast.Size = new Size(75, 23);
+        btnBroadcast.TabIndex = 6;
+        btnBroadcast.Text = "Broadcast";
+        btnBroadcast.UseVisualStyleBackColor = true;
+        btnBroadcast.Click += btnBroadcast_Click;
         // 
         // ClientForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(699, 365);
+        Controls.Add(btnBroadcast);
+        Controls.Add(lblWho);
+        Controls.Add(txtWho);
         Controls.Add(lblMessage);
         Controls.Add(txtMessage);
         Controls.Add(btnSend);
@@ -137,4 +170,7 @@ partial class ClientForm
     private Button btnSend;
     private TextBox txtMessage;
     private Label lblMessage;
+    private Label lblWho;
+    private TextBox txtWho;
+    private Button btnBroadcast;
 }

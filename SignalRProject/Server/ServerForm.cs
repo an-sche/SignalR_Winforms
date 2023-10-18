@@ -35,6 +35,8 @@ public partial class ServerForm : Form
             return;
 
         foreach (var connection in MyHub.Connections.GetConnections(client))
+        {
             _hubContext.Clients.Client(connection).SendAsync("ReceiveMessage", "Server: " + message);
+        }
     }
 }
