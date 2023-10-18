@@ -34,8 +34,8 @@ partial class ServerForm
         txtMessage = new TextBox();
         lblMessage = new Label();
         btnSend = new Button();
-        btnStart = new Button();
-        btnStop = new Button();
+        lblClient = new Label();
+        txtClient = new TextBox();
         SuspendLayout();
         // 
         // txtLog
@@ -88,34 +88,29 @@ partial class ServerForm
         btnSend.UseVisualStyleBackColor = true;
         btnSend.Click += btnSend_Click;
         // 
-        // btnStart
+        // lblClient
         // 
-        btnStart.Location = new Point(341, 33);
-        btnStart.Name = "btnStart";
-        btnStart.Size = new Size(75, 23);
-        btnStart.TabIndex = 6;
-        btnStart.Text = "Start";
-        btnStart.UseVisualStyleBackColor = true;
-        btnStart.Click += btnStart_Click;
+        lblClient.AutoSize = true;
+        lblClient.Location = new Point(341, 56);
+        lblClient.Name = "lblClient";
+        lblClient.Size = new Size(38, 15);
+        lblClient.TabIndex = 7;
+        lblClient.Text = "Client";
         // 
-        // btnStop
+        // txtClient
         // 
-        btnStop.Enabled = false;
-        btnStop.Location = new Point(479, 33);
-        btnStop.Name = "btnStop";
-        btnStop.Size = new Size(75, 23);
-        btnStop.TabIndex = 7;
-        btnStop.Text = "Stop";
-        btnStop.UseVisualStyleBackColor = true;
-        btnStop.Click += btnStop_Click;
+        txtClient.Location = new Point(341, 74);
+        txtClient.Name = "txtClient";
+        txtClient.Size = new Size(213, 23);
+        txtClient.TabIndex = 6;
         // 
         // ServerForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(800, 450);
-        Controls.Add(btnStop);
-        Controls.Add(btnStart);
+        Controls.Add(lblClient);
+        Controls.Add(txtClient);
         Controls.Add(btnSend);
         Controls.Add(lblMessage);
         Controls.Add(txtMessage);
@@ -136,6 +131,6 @@ partial class ServerForm
     private TextBox txtMessage;
     private Label lblMessage;
     private Button btnSend;
-    private Button btnStart;
-    private Button btnStop;
+    private Label lblClient;
+    private TextBox txtClient;
 }

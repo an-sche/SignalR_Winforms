@@ -1,41 +1,40 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Server;
 
 public partial class ServerForm : Form
 {
-    private IWebHost? _host;
+    private readonly IWebHost? _host;
+    private readonly IHubContext<MyHub>? _hubContext;
 
     public ServerForm()
     {
         InitializeComponent();
-    }
 
-    private void btnSend_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void btnStart_Click(object sender, EventArgs e)
-    {
         _host = WebHost.CreateDefaultBuilder()
             .UseUrls("https://localhost:5050")
             .UseStartup<Startup>().Build();
 
-        _host.StartAsync();
+        _hubContext = (IHubContext<MyHub>?)_host.Services
+            .GetService(typeof(IHubContext<MyHub>));
 
-        btnStart.Enabled = false;
-        btnStop.Enabled = true;
+        _host.StartAsync();
     }
 
-    private void btnStop_Click(object sender, EventArgs e)
+    private void btnSend_Click(object sender, EventArgs e)
     {
-        _host?.StopAsync();
+        if (_hubContext == null)
+            return;
 
-        btnStop.Enabled = false;
-        btnStart.Enabled = true;
+        string client = txtClient.Text;
+        string message = txtMessage.Text;
+
+        if (!MyHub.Connections.GetConnections(client).Any())
+            return;
+
+        foreach (var connection in MyHub.Connections.GetConnections(client))
+            _hubContext.Clients.Client(connection).SendAsync("ReceiveMessage", "Server: " + message);
     }
 }

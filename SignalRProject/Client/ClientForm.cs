@@ -32,7 +32,7 @@ public partial class ClientForm : Form
 
     private void btnSend_Click(object sender, EventArgs e)
     {
-        connection.InvokeCoreAsync("SendMessage", args: new[] { "Hello" });
+        connection.InvokeCoreAsync("SendMessage", args: new[] { txtClientName.Text, txtMessage.Text });
     }
 
     private void UpdateText(string text)
