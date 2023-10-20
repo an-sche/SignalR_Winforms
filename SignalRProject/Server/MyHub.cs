@@ -14,7 +14,7 @@ public class MyHub : Hub<IChatClient>
             return;
         }
 
-        string messageToSend = user + ": " + message;
+        string messageToSend = "[All][" + user + "]: " + message;
 
         await Clients.All.ReceiveMessage(messageToSend);
     }
@@ -35,7 +35,7 @@ public class MyHub : Hub<IChatClient>
             return;
         }
 
-        string messageToSend = user + ": " + message;
+        string messageToSend = "[DM][" + user + "]: " + message;
         foreach (var connection in receiverConnections)
         {
             await Clients.Client(connection).ReceiveMessage(messageToSend);
@@ -46,6 +46,7 @@ public class MyHub : Hub<IChatClient>
     public async Task DeclareUser(string name)
     {
         Connections.Add(name, Context.ConnectionId);
+        ServerForm.Instance?.AddClient(name);
         await Clients.Caller.ReceiveMessage($"User <{name}> Added.");
     }
 
@@ -55,6 +56,7 @@ public class MyHub : Hub<IChatClient>
         if (name != null)
         {
             Connections.Remove(name, Context.ConnectionId);
+            ServerForm.Instance?.RemoveClient(name);
         }
 
         return base.OnDisconnectedAsync(exception);
