@@ -17,6 +17,7 @@ public class MyHub : Hub<IChatClient>
         string messageToSend = "[All][" + user + "]: " + message;
 
         await Clients.All.ReceiveMessage(messageToSend);
+        ServerForm.Instance?.Log($"[{user}][Broadcast]: {message}");
     }
 
     public async Task SendMessage(string who, string message)
@@ -41,6 +42,7 @@ public class MyHub : Hub<IChatClient>
             await Clients.Client(connection).ReceiveMessage(messageToSend);
         }
         await Clients.Caller.ReceiveMessage(messageToSend);
+        ServerForm.Instance?.Log($"[{user}->{who}]: {message}");
     }
 
     public async Task DeclareUser(string name)
