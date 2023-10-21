@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+k3d6pSEUHkyrpZEUT/3D66RoLK2kOob5kzw0nhX4ao86ck6R+wmn68oEmPf0qt5RMtTfvOy9/YB47slFQW9vA==",
+  "dgSpecHash": "A8ouwIy+77PiCZ0NkMtei6vWFQ64zfNwIyy4AMHzXnvfs45ZLJanlEF9Cny7iKM5uhnhn7w7AzAayPG/LH/PbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bscheitlin\\source\\repos\\SignalR_Winforms\\SignalRProject\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Users\\Brian\\Source\\Repos\\SignalR_Winforms\\SignalRProject\\Server\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -20,7 +20,7 @@ public partial class ServerForm : Form, IServerForm
         _clients = new Dictionary<string, Control>();
 
         _host = WebHost.CreateDefaultBuilder()
-            .UseUrls("https://localhost:5050")
+            .UseUrls("https://192.168.50.141:6900")
             .UseStartup<Startup>().Build();
 
         _hubContext = (IHubContext<MyHub>?)_host.Services

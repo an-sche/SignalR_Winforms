@@ -11,7 +11,18 @@ public partial class ClientForm : Form
         InitializeComponent();
 
         connection = new HubConnectionBuilder()
-            .WithUrl("https://localhost:5050/myHub")
+            .WithUrl("https://192.168.50.141:6900/myHub", (options) =>
+            {
+                options.HttpMessageHandlerFactory = (message) =>
+                {
+                    if (message is HttpClientHandler clientHandler)
+                    {
+                        clientHandler.ServerCertificateCustomValidationCallback +=
+                            (msg, cert, chain, policy) => { return true; };
+                    }
+                    return message;
+                };
+            })
             .Build();
 
         connection.On("ReceiveMessage", (string message) =>
