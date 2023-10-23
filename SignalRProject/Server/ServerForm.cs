@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SignalR;
+using System.Net.Sockets;
+using System.Net;
 
 namespace Server;
 
@@ -17,16 +19,24 @@ public partial class ServerForm : Form, IServerForm
 
         InitializeComponent();
 
+        // Get my local IP:
+        var ipAddresses = Dns.GetHostEntry(Dns.GetHostName()).AddressList;
+        string ipAddress = ipAddresses.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork)?.ToString() ?? "127.0.0.1";
+
         _clients = new Dictionary<string, Control>();
 
+        string url = "https://" + ipAddress + ":5050";
+
         _host = WebHost.CreateDefaultBuilder()
-            .UseUrls("https://192.168.50.141:6900")
+            .UseUrls(url)
             .UseStartup<Startup>().Build();
 
         _hubContext = (IHubContext<MyHub>?)_host.Services
             .GetService(typeof(IHubContext<MyHub>));
 
         _host.StartAsync();
+
+        txtLog.AppendText("Server Started at: " + url + Environment.NewLine);
     }
 
     public void AddClient(string client)

@@ -39,11 +39,13 @@ partial class ClientForm
         lblWho = new Label();
         txtWho = new TextBox();
         btnBroadcast = new Button();
+        label1 = new Label();
+        txtServer = new TextBox();
         SuspendLayout();
         // 
         // txtClientName
         // 
-        txtClientName.Location = new Point(100, 13);
+        txtClientName.Location = new Point(100, 41);
         txtClientName.Name = "txtClientName";
         txtClientName.Size = new Size(167, 23);
         txtClientName.TabIndex = 0;
@@ -60,7 +62,7 @@ partial class ClientForm
         // lblClientName
         // 
         lblClientName.AutoSize = true;
-        lblClientName.Location = new Point(40, 16);
+        lblClientName.Location = new Point(40, 44);
         lblClientName.Name = "lblClientName";
         lblClientName.Size = new Size(42, 15);
         lblClientName.TabIndex = 2;
@@ -138,11 +140,29 @@ partial class ClientForm
         btnBroadcast.UseVisualStyleBackColor = true;
         btnBroadcast.Click += btnBroadcast_Click;
         // 
+        // label1
+        // 
+        label1.AutoSize = true;
+        label1.Location = new Point(40, 14);
+        label1.Name = "label1";
+        label1.Size = new Size(42, 15);
+        label1.TabIndex = 12;
+        label1.Text = "Server:";
+        // 
+        // txtServer
+        // 
+        txtServer.Location = new Point(100, 11);
+        txtServer.Name = "txtServer";
+        txtServer.Size = new Size(167, 23);
+        txtServer.TabIndex = 11;
+        // 
         // ClientForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(699, 365);
+        Controls.Add(label1);
+        Controls.Add(txtServer);
         Controls.Add(btnBroadcast);
         Controls.Add(lblWho);
         Controls.Add(txtWho);
@@ -173,4 +193,6 @@ partial class ClientForm
     private Label lblWho;
     private TextBox txtWho;
     private Button btnBroadcast;
+    private Label label1;
+    private TextBox txtServer;
 }
