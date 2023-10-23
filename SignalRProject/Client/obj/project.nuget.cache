@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k0nQ45eoihWAw0MkG0g2VMn29dW4tDQh9hFDTEW2oGyeMLNd3VRME/jtkyl1Q3PtG627laazHH0iN7yr4NiIKA==",
+  "dgSpecHash": "hU+PDDBaMDg1ip43Dm+24yfHFAcEm9laMAvwQzNQDgskCHWNbQcRfHrHwek+ot/yYujPnEFp9IPndftIqH1+pw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Brian\\Source\\Repos\\SignalR_Winforms\\SignalRProject\\Client\\Client.csproj",
+  "projectFilePath": "C:\\Users\\Brian\\source\\repos\\SignalR_Winforms\\SignalRProject\\Client\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brian\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\7.0.12\\microsoft.aspnetcore.connections.abstractions.7.0.12.nupkg.sha512",
     "C:\\Users\\Brian\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\7.0.12\\microsoft.aspnetcore.http.connections.client.7.0.12.nupkg.sha512",
