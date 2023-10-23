@@ -3,3 +3,7 @@
 ################################################################################
 
 /SignalRProject/.vs
+/SignalRProject/Client/bin
+/SignalRProject/Client/obj
+/SignalRProject/Server/bin
+/SignalRProject/Server/obj

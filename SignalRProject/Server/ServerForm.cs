@@ -31,15 +31,16 @@ public partial class ServerForm : Form, IServerForm
 
     public void AddClient(string client)
     {
-        Label clientLabel = new Label();
-        clientLabel.Text = client;
-        clientLabel.Click += (s, e) =>
+        var clientBtn = new Button();
+        clientBtn.Text = client;
+        clientBtn.Click += (s, e) =>
         {
             BeginInvoke(() => txtClient.Text = client);
         };
+        clientBtn.Width = (int)(flowLayoutPanel1.Width * .9);
 
-        _clients.Add(client, clientLabel);
-        BeginInvoke(() => flowLayoutPanel1.Controls.Add(clientLabel));
+        _clients.Add(client, clientBtn);
+        BeginInvoke(() => flowLayoutPanel1.Controls.Add(clientBtn));
         BeginInvoke(() => txtLog.AppendText($"Client <{client}> Added." + Environment.NewLine));
     }
 
@@ -71,7 +72,7 @@ public partial class ServerForm : Form, IServerForm
 
         foreach (var connection in MyHub.Connections.GetConnections(client))
         {
-            _hubContext.Clients.Client(connection).SendAsync("ReceiveMessage", "[Server]: " + message + Environment.NewLine);
+            _hubContext.Clients.Client(connection).SendAsync("ReceiveMessage", "[Server]: " + message);
         }
     }
 }

@@ -36,12 +36,13 @@ public class MyHub : Hub<IChatClient>
             return;
         }
 
-        string messageToSend = "[DM][" + user + "]: " + message;
+        string messageToSend = "[" + user + "] says: " + message;
         foreach (var connection in receiverConnections)
         {
             await Clients.Client(connection).ReceiveMessage(messageToSend);
         }
-        await Clients.Caller.ReceiveMessage(messageToSend);
+        string messageSent = "To [" + who + "]: " + message;
+        await Clients.Caller.ReceiveMessage(messageSent);
         ServerForm.Instance?.Log($"[{user}->{who}]: {message}");
     }
 
@@ -49,7 +50,7 @@ public class MyHub : Hub<IChatClient>
     {
         Connections.Add(name, Context.ConnectionId);
         ServerForm.Instance?.AddClient(name);
-        await Clients.Caller.ReceiveMessage($"User <{name}> Added.");
+        await Clients.Caller.ReceiveMessage($"Connected as <{name}>.");
     }
 
     public override Task OnDisconnectedAsync(Exception? exception)
